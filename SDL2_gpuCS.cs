@@ -413,9 +413,10 @@ public unsafe static class SDL_Gpu
         public SamplerAddressMode AddressModeV;
         public SamplerAddressMode AddressModeW;
         public float MipLodBias;
-        public byte AnisotropyEnable;
+        public int AnisotropyEnable; /* SDL_bool */
         public float MaxAnisotropy;
-        public byte CompareEnable;
+        public int CompareEnable; /* SDL_bool */
+		public CompareOp CompareOp;
         public float MinLod;
         public float MaxLod;
         public BorderColor BorderColor;
@@ -450,12 +451,12 @@ public unsafe static class SDL_Gpu
         public StencilOp FailOp;
         public StencilOp PassOp;
         public StencilOp DepthFailOp;
-        public StencilOp CompareOp;
+        public CompareOp CompareOp;
     }
 
     public struct ColorAttachmentBlendState
     {
-        public byte BlendEnable;
+        public int BlendEnable; /* SDL_bool */
         public BlendFactor SourceColorBlendFactor;
         public BlendFactor DestinationColorBlendFactor;
         public BlendOp ColorBlendOp;
@@ -480,7 +481,7 @@ public unsafe static class SDL_Gpu
         public uint Width;
         public uint Height;
         public uint Depth;
-        public byte IsCube;
+        public int IsCube; /* SDL_bool */
         public uint LayerCount;
         public uint LevelCount;
         public SampleCount SampleCount;
@@ -493,7 +494,7 @@ public unsafe static class SDL_Gpu
         public FillMode FillMode;
         public CullMode CullMode;
         public FrontFace FrontFace;
-        public byte DepthBiasEnable;
+        public int DepthBiasEnable; /* SDL_bool */
         public float DepthBiasConstantFactor;
         public float DepthBiasClamp;
         public float DepthBiasSlopeFactor;
@@ -507,11 +508,11 @@ public unsafe static class SDL_Gpu
 
     public struct DepthStencilState
     {
-        public byte DepthTestEnable;
-        public byte DepthWriteEnable;
+        public int DepthTestEnable; /* SDL_bool */
+        public int DepthWriteEnable; /* SDL_bool */
         public CompareOp CompareOp;
-        public byte DepthBoundsTestEnable;
-        public byte StencilTestEnable;
+        public int DepthBoundsTestEnable; /* SDL_bool */
+        public int StencilTestEnable; /* SDL_bool */
         public StencilOpState BackStencilState;
         public StencilOpState FrontStencilState;
         public uint CompareMask;
@@ -531,7 +532,7 @@ public unsafe static class SDL_Gpu
     {
         public ColorAttachmentDescription* ColorAttachmentDescriptions;
         public uint ColorAttachmentCount;
-        public byte HasDepthStencilAttachment;
+        public int HasDepthStencilAttachment; /* SDL_bool */
         public TextureFormat DepthStencilFormat;
     }
 
@@ -577,7 +578,7 @@ public unsafe static class SDL_Gpu
     {
         public TextureSlice TextureSlice;
         public Color ClearColor;
-        public LoadOp publicLoadOp;
+        public LoadOp LoadOp;
         public StoreOp StoreOp;
         public int Cycle; /* SDL_bool */
     }
@@ -1123,7 +1124,7 @@ public unsafe static class SDL_Gpu
     [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
     public static extern void SDL_GpuWaitForFences(
         nint device,
-        byte waitAll,
+        int waitAll, /* SDL_bool */
         uint fenceCount,
         nint* fences
     );
