@@ -440,9 +440,9 @@ public unsafe static class SDL_Gpu
 
     public struct VertexInputState
     {
-        public VertexBinding* vertexBindings;
+        public VertexBinding* VertexBindings;
         public uint VertexBindingCount;
-        public VertexAttribute* vertexAttributes;
+        public VertexAttribute* VertexAttributes;
         public uint VertexAttributeCount;
     }
 
@@ -807,7 +807,7 @@ public unsafe static class SDL_Gpu
 
     [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
     public static extern void SDL_GpuBindVertexStorageBuffers(
-        nint renderPas,
+        nint renderPass,
         uint firstSlot,
         nint* storageBuffers,
         uint bindingCount
