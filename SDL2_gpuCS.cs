@@ -774,7 +774,7 @@ public unsafe static class SDL_Gpu
     );
 
     [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
-    public static extern void SDL_GpuBindVertexBuffer(
+    public static extern void SDL_GpuBindVertexBuffers(
         nint renderPass,
         uint firstBinding,
         BufferBinding *bindings,
