@@ -927,7 +927,7 @@ public unsafe static class SDL_Gpu
     public static extern void SDL_GpuPushComputeUniformData(
         nint computePass,
         uint slotIndex,
-        nint dat,
+        nint data,
         uint dataLengthInBytes
     );
 
